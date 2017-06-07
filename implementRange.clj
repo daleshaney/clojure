@@ -1,5 +1,5 @@
 (fn [x y]
-  (loop [start x end (- y 1) base [(- y 1)]]
+  (loop [start x end y base ()]
     (if (= start end )
-      (reverse base)
+      base
       (recur start (dec end) (conj base ( - end 1))))))
