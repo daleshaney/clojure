@@ -1,0 +1,11 @@
+(defn intervals [x]
+    (loop [vect (into [] (sort x)) length (count x) currNum 1 base [] currVect [(get vect 0)]]
+      (cond
+        (empty? vect) base
+        (= (get vect (- currNum 1)) (get vect currNum)) (recur vect length (inc currNum) base currVect)
+        (nil? (get vect currNum))
+          (conj base (conj currVect (get vect (- currNum 1))))
+        :else
+          (if (= (get vect currNum) (+ (get vect (- currNum 1)) 1))
+            (recur vect length (inc currNum) base currVect)
+            (recur vect length (inc currNum) (conj base (conj currVect (get vect (- currNum 1)))) [(get vect currNum)])))))
